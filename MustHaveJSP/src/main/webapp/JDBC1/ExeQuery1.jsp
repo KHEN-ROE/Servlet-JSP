@@ -37,7 +37,7 @@
 </table>
 <%
 	//연결 닫기
-	jdbc.close();
+// 	jdbc.close();
 %>
 </body>
 </html>

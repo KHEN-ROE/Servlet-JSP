@@ -32,7 +32,7 @@
 %>
 
 <table class="table table-dark table-striped">
-<tr><th>id</th><th>pwd</th><th>name</th><th>등록일</th></tr>
+	<tr><th>id</th><th>pwd</th><th>name</th><th>등록일</th></tr>
 
 <%
 	while(rs.next()) {

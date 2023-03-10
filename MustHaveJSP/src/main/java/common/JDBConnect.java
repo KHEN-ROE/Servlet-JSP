@@ -53,7 +53,7 @@ public class JDBConnect {
 		public JDBConnect(ServletContext application) {
 			try {
 				//JDBC 드라이버 로드
-				String driver = application.getInitParameter("MySQLDrive");
+				String driver = application.getInitParameter("MySQLDriver");
 				Class.forName(driver);
 				
 				//DB에 연결
