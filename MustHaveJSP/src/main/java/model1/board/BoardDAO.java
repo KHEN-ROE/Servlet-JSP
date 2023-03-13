@@ -114,7 +114,7 @@ public class BoardDAO extends JDBConnect {
 		return dto;
 	}
 	
-	// 게시글 데이터를 받아 DB에 추가
+	// 게시글 데이터를 받아 DB에 추가. 근데 아직 보여주진 못함. 보여주는 건 view.jsp에서
 	public int insertWrite(BoardDTO dto) {
 		int result = 0;
 		
@@ -203,5 +203,69 @@ public class BoardDAO extends JDBConnect {
 		return bbs;
 	}
 	
+	//검색 조건에 맞는 게시물 목록 반환(페이징 기능 지원)
+	public List<BoardDTO> selectListPage(Map<String, Object> map) {
+		List<BoardDTO> bbs = new Vector<BoardDTO>(); //결과(게시물 목록)를 담을 변수
+		
+		//쿼리문 템플릿 for oracle
+//		String query = "SELECT * FROM ( " 
+//						+ "	SELECT Tb.*, ROWNUM RNum FROM (" //넘버링해주는 RNum 필드 추가
+//						+"		SELECT * FROM board "; // 서브쿼리니까 여기서부터 해석
+//		
+//		//검색 조건 추가
+//		if (map.get("SearchWord") != null) {
+//			query += " WHERE " + map.get("searchFiled")
+//					+ " LIKE '%" + map.get("searchWord") + "%' ";
+//		}
+//		
+//		query += "		ORDER By num DESC "
+//				+ "		) Tb " //as 생략된 거임
+//				+ " ) "
+//				+ "WHERE rNum  BETWEEN ? AND ?";
+		
+		//쿼리문 템플릿 for mysql
+		String query = "SELECT * FROM board";
+		
+		//검색조건 추가
+		if (map.get("searchWord") != null) {
+			query += " WHERE " + map.get("searchField")
+					+ " LIKE '%" +map.get("searchWord") + "%' ";
+		}
+		
+		query += " ORDER BY num DESC LIMIT ?,?"; //LIMIT FROM , TO(개수?)
+		
+		try {
+			//쿼리문 완성
+			psmt = con.prepareStatement(query); //connection 객체의 prepareStatement 인터페이스에 query전달. 그걸 psmt에 전달
+//			psmt.setString(1, map.get("start").toString()); // this sentence is for oracle.
+//			psmt.setString(2, map.get("end").toString());
+			psmt.setInt(1, (int)map.get("start")-1);
+			psmt.setInt(2, (int)map.get("pageSize"));
+			
+			//쿼리문 실행
+			rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				//한 행(게시물 하나)의 데이터를 dto에 저장
+				BoardDTO dto = new BoardDTO();
+				dto.setNum(rs.getString("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString("id"));
+				dto.setVisitcount(rs.getString("visitcount"));
+				
+				//반환할 결과 목록에 게시물 추가
+				bbs.add(dto);
+			}
+		}
+		catch(Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		
+		return bbs;
+	}
 	
 }
