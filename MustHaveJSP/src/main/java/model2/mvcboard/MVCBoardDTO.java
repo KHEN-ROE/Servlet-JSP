@@ -6,7 +6,7 @@ public class MVCBoardDTO {
 	private String name;
 	private String title;
 	private String content;
-	private java.sql.Date postdate;
+	private String postdate;
 	private String ofile;
 	private String sfile;
 	private int downcount;
@@ -44,10 +44,10 @@ public class MVCBoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public java.sql.Date getPostdate() {
+	public String getPostdate() {
 		return postdate;
 	}
-	public void setPostdate(java.sql.Date postdatye) {
+	public void setPostdate(String postdate) {
 		this.postdate = postdate;
 	}
 	public String getOfile() {
