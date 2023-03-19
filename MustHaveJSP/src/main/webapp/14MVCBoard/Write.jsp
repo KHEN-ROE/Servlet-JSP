@@ -33,7 +33,7 @@
 </head>
 <body>
 <h2>파일 첨부형 게시판 - 글쓰기(write)</h2>
-<form name="writeFrm" method="post" enctype="multipart/form-data" action="../mvcboard/write/do" onsubmit="return validateForm(this);">
+<form name="writeFrm" method="post" enctype="multipart/form-data" action="../mvcboard/write.do" onsubmit="return validateForm(this);">
 <table border="1" width="90%">
 	<tr>
 		<td>작성자</td>

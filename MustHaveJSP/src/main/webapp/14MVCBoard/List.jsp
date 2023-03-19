@@ -52,7 +52,7 @@
 				${ map.totalCount -( ((map.pageNum-1) * map.pageSize)  + loop.index) }
 			</td>
 			<td align="left"> <!-- 제목(링크) -->
-				<a href="../mvcb-oard/view.do?idx=${ row.idx }">${ row.title }</a>
+				<a href="../mvcboard/view.do?idx=${ row.idx }">${ row.title }</a>
 			</td>
 			
 			<td>${ row.name }</td> <!-- 작성자 -->
@@ -71,7 +71,7 @@
 	</table>
 	
 	<!-- 하단 메뉴(바로가기, 글쓰기) -->
-	<table border="1" width="90">
+	<table border="1" width="90%">
 		<tr align="center">
 			<td>
 				${ map.pagingImg }
