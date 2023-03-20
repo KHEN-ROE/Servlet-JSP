@@ -52,7 +52,7 @@
 				${ map.totalCount -( ((map.pageNum-1) * map.pageSize)  + loop.index) }
 			</td>
 			<td align="left"> <!-- 제목(링크) -->
-				<a href="../mvcboard/view.do?idx=${ row.idx }">${ row.title }</a>
+				<a href="../mvcboard/view.do?idx=${ row.idx }"> ${ row.title }  </a>
 			</td>
 			
 			<td>${ row.name }</td> <!-- 작성자 -->
@@ -61,7 +61,7 @@
 			
 			<td> <!-- 첨부 파일 -->
 			<c:if test="${ not empty row.ofile }">
-				<a href="../mvcboard/download.do?ofile=${row.ofile}&sfile=${ row.sfile }%idx=${ row.idx } }">[Down]</a>
+				<a href="../mvcboard/download.do?ofile=${row.ofile}&sfile=${ row.sfile }&idx=${ row.idx }">[Down]</a>
 			</c:if>
 			</td>
 		</tr>
