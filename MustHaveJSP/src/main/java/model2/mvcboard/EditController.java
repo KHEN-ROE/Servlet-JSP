@@ -51,8 +51,10 @@ public class EditController extends HttpServlet{
 		//2. 파일 업로드 외 처리
 		//수정 내용을 매개변수에서 얻어옴
 		String idx = mr.getParameter("idx");
-		String prevOfile = mr.getParameter("PrevOfile");
-		String prevSfile = mr.getParameter("PrevSfile");
+		String prevOfile = mr.getParameter("prevOfile");
+		String prevSfile = mr.getParameter("prevSfile");
+		
+
 		String name = mr.getParameter("name");
 		String title = mr.getParameter("title");
 		String content = mr.getParameter("content");

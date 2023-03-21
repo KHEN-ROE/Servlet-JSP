@@ -43,7 +43,7 @@
 	<tr>
 		<td>제목</td>
 		<td>
-			<input type="text" name="name" style="width:90%;" value="${dto.title }"/>
+			<input type="text" name="title" style="width:90%;" value="${dto.title }"/>
 		</td>
 	</tr>
 	
