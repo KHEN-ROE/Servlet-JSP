@@ -53,7 +53,6 @@ public class EditController extends HttpServlet{
 		String idx = mr.getParameter("idx");
 		String prevOfile = mr.getParameter("PrevOfile");
 		String prevSfile = mr.getParameter("PrevSfile");
-		
 		String name = mr.getParameter("name");
 		String title = mr.getParameter("title");
 		String content = mr.getParameter("content");
